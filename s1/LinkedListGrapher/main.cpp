@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+//Fernandito hijo de Dios
 #include <QApplication>
 
 int main(int argc, char *argv[])
