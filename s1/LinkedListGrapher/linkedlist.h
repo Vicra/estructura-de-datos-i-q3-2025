@@ -10,6 +10,7 @@ using std::vector;
 class LinkedList
 {
 private:
+//Aqui es la cabeza de la LL
     Node* head;
 public:
     LinkedList();
