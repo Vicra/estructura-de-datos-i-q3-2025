@@ -26,6 +26,8 @@ void LinkedList::insertNode(int newValue){
     }
 }
 
+// agregando mas codigo
+
 void LinkedList::printList(){
     Node* iteratorNode = this->first;
     cout << "Linked List: ";
