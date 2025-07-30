@@ -12,6 +12,7 @@ public:
 
     void insertNode(int newValue);
     void printList();
+    bool deleteValue(int valueToDelete);
 };
 
 // adding new code
