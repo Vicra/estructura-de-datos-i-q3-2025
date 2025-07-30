@@ -39,3 +39,39 @@ void LinkedList::printList(){
     }
     cout << endl;
 }
+
+bool LinkedList::deleteValue(int valueToDelete){
+    // caso base 0: lista vacia
+    if(this->first == nullptr) {
+        return false;
+    }
+
+    // 1er caso: es la cabeza
+    if(this->first->value == valueToDelete){
+        Node* tmpToDelete = this->first;
+
+        // reasignar la cabeza
+        this->first = this->first->next;
+        delete tmpToDelete;
+    }
+
+    else {
+        Node* it = this->first;
+        while(it->next != nullptr){
+            if(it->next->value == valueToDelete){
+                // encontre
+                Node* tmpToDelete = it->next;
+
+                // actualizar el next de it
+                it->next = tmpToDelete->next;
+
+                // liberar la memoria
+                delete tmpToDelete;
+                return true;
+            }
+            it = it->next;
+        }
+    }
+    return false;
+
+}

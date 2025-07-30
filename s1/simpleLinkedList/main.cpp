@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     l.insertNode(6);
     l.insertNode(7);
     l.printList();
+    l.deleteValue(6);
+    l.printList();
 
     return a.exec();
 }
