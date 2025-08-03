@@ -6,13 +6,10 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     LinkedList l;
-    l.insertNode(5);
-    l.insertNode(6);
-    l.insertNode(6);
-    l.insertNode(7);
-    l.printList();
-    l.deleteValue(6);
-    l.printList();
+    l.pushBack(new Node(1));
+    l.pushBack(new Node(2));
+    l.pushBack(new Node(3));
+    l.print();
 
     return a.exec();
 }
