@@ -9,6 +9,8 @@ public:
     DoubleLinkedList();
 
     void push_back(int val);
+    void print();
+    bool remove(int val);
 };
 
 #endif // DOUBLELINKEDLIST_H

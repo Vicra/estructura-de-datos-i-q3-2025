@@ -1,19 +1,36 @@
 #include <QCoreApplication>
-
+#include "doublelinkedlist.h"
+#include <iostream>
+using std::cout;
+using std::endl;
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    DoubleLinkedList dll;
+    dll.push_back(1);
+    dll.print();
+    cout << "removing 1" << endl;
+    dll.remove(1);
+    dll.print();
 
-    // Set up code that uses the Qt event loop here.
-    // Call a.quit() or a.exit() to quit the application.
-    // A not very useful example would be including
-    // #include <QTimer>
-    // near the top of the file and calling
-    // QTimer::singleShot(5000, &a, &QCoreApplication::quit);
-    // which quits the application after 5 seconds.
+    dll.push_back(1);
+    dll.push_back(2);
+    dll.print();
+    dll.remove(1);
+    cout << "removing 1" << endl;
+    dll.print();
 
-    // If you do not need a running Qt event loop, remove the call
-    // to a.exec() or use the Non-Qt Plain C++ Application template.
+    dll.push_back(3);
+    dll.print();
+    dll.remove(3);
+    cout << "removing 3" << endl;
+    dll.print();
 
+    dll.push_back(3);
+    dll.push_back(4);
+    dll.print();
+    dll.remove(3);
+    cout << "removing 3" << endl;
+    dll.print();
     return a.exec();
 }
