@@ -6,6 +6,7 @@ using std::endl;
 
 DoubleLinkedList::DoubleLinkedList() {
     this->head = nullptr;
+    this->tail = nullptr;
 }
 
 void DoubleLinkedList::push_back(int val){
@@ -24,12 +25,19 @@ void DoubleLinkedList::push_back(int val){
         // estoy en el ultimo
         it->next = newNode;
         newNode->prev = it;
+        this->tail = newNode;
     }
 }
 
 void DoubleLinkedList::print(){
     DLLNode*it = this->head;
-    cout << "null <-";
+
+    if(this->head == nullptr){
+        cout << "head: null" << endl;
+    } else {
+        cout << "Head: " << this->head->value << endl;
+        cout << "null <-";
+    }
     while(it != nullptr){
         cout << it->value;
         if(it->next != nullptr){
@@ -40,6 +48,12 @@ void DoubleLinkedList::print(){
         it = it->next;
     }
     cout << endl;
+    if(this->tail == nullptr){
+        cout << "tail: null" << endl;
+    } else {
+        cout << "Tail: " << this->tail->value << endl;
+    }
+
 }
 
 bool DoubleLinkedList::remove(int val){
@@ -54,10 +68,25 @@ bool DoubleLinkedList::remove(int val){
         if(this->head->next != nullptr){
             this->head->next->prev = nullptr;
         }
+
+        // caso: solamente hay un nodo (tail y head son iguales)
+        if(this->head->next == nullptr
+            && this->head == this->tail){
+            this->head = nullptr;
+            this->tail = nullptr;
+
+            delete tmpToDelete;
+            return true;
+        }
+
         this->head = this->head->next;
         delete tmpToDelete;
         return true;
     }
+
+    // TODO: cuando es la tail
+
+
 
     // 3er caso: no es la cabeza
     DLLNode*it = this->head;
@@ -74,5 +103,30 @@ bool DoubleLinkedList::remove(int val){
         it = it->next;
     }
     return false;
+}
 
+
+void DoubleLinkedList::reverse() {
+    // asignar el tail a la head
+    this->tail = this->head;
+
+    // asignar temporales (iteradores)
+    DLLNode* tmp1 = this->head;
+    DLLNode* tmp2 = tmp1->next;
+
+    // reasignar punteros de la cabeza (now tail)
+    tmp1->next = nullptr;
+    tmp1->prev = tmp2;
+
+    while(tmp2 != nullptr){
+        // reasignar punteros de cada nodo interno + la cola
+        tmp2->prev = tmp2->next;
+        tmp2->next = tmp1;
+
+        //iterar o actualizar temps
+        tmp1 = tmp2;
+        tmp2 = tmp2->prev; // tmp2 = tmp1->prev;
+    }
+    // reasignar la cabeza
+    this->head = tmp1;
 }
