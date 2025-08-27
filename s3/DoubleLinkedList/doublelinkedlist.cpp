@@ -130,3 +130,58 @@ void DoubleLinkedList::reverse() {
     // reasignar la cabeza
     this->head = tmp1;
 }
+
+
+void DoubleLinkedList::insertAfterNode(DLLNode* node, int value){
+    // 1st case: validate nullptr
+    if(node == nullptr){
+        return;
+    }
+
+    DLLNode* newNode = new DLLNode(value);
+    // if it is tail, it will be the new tail
+    if(node == this->tail){
+        node->next = newNode; // this->tail->next = newNode;
+        newNode->prev = this->tail; //newNode->prev = node;
+        this->tail = newNode;
+    }
+
+    // if it is any element on the middle
+    else  {
+        // save next
+        DLLNode * next = node->next;
+        node->next = newNode;
+        newNode->prev = node;
+        newNode->next = next;
+        next->prev = newNode;
+    }
+}
+
+bool DoubleLinkedList::deletePredecessor(DLLNode* node){
+    // 1er caso es nullptr
+    if(node == nullptr) return false;
+
+    // 2do caso la cabeza es nula
+    if(this->head == nullptr) return false;
+
+    // 3er caso es la cabeza, por lo tanto no tiene predecedor
+    if(node == this->head) return false;
+
+    // 4to caso es el siguiente de la cabeza por lo tanto la cabeza se actualiza
+    if(this->head->next == node){
+        DLLNode* nodeToDelete = node->prev;
+        node->prev = nullptr;
+        this->head = node;
+        delete nodeToDelete;
+        return true;
+    }
+    else {
+        // 5to caso es en medio
+        DLLNode* nodeToDelete = node->prev;
+        DLLNode* pPrev = node->prev->prev;
+        node->prev = pPrev;
+        pPrev->next = node;
+        delete nodeToDelete;
+        return true;
+    }
+}

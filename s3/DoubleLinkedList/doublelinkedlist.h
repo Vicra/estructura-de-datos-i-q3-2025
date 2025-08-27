@@ -13,6 +13,8 @@ public:
     void print();
     bool remove(int val);
     void reverse();
+    void insertAfterNode(DLLNode* node, int value);
+    bool deletePredecessor(DLLNode* node);
 };
 
 #endif // DOUBLELINKEDLIST_H
