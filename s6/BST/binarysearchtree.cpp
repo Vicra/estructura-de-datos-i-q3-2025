@@ -148,13 +148,13 @@ TreeNode* BinarySearchTree::search(TreeNode* currentNode, int x){
     if(currentNode->value == x){
         return currentNode;
     }
-
     else if(x < currentNode->value){
         return search(currentNode->left, x);
     }
     else {
         return search(currentNode->right, x);
     }
+
 }
 
 

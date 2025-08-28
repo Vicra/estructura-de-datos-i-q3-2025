@@ -25,5 +25,13 @@ int main(int argc, char *argv[])
     bst.printCool("", bst.root, false);
     cout << endl;
 
+    int searchValue = 40;
+    TreeNode* found = bst.search(bst.root, searchValue);
+    if(found != nullptr){
+        cout << "found: " << found->value << endl;
+    } else {
+        cout << "nout found value : " << searchValue << endl;
+    }
+
     return a.exec();
 }
