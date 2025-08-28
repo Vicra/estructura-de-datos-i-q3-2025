@@ -4,21 +4,19 @@ BinarySearchTree::BinarySearchTree() {
     this->root = nullptr;
 }
 
-TreeNode* insertNode(TreeNode* currentNode, TreeNode* newNode){
+TreeNode* BinarySearchTree::insertNode(TreeNode* currentNode, TreeNode* newNode){
     if(currentNode == nullptr) return newNode;
-
-    // validar duplicates
-    if(currentNode->value == newNode->value)
-        return currentNode;
 
     // case 2: el valor es mayor que el nodo actual
     if(newNode->value > currentNode->value ){
         currentNode->right = insertNode(currentNode->right, newNode);
-    } else {
+    } else if(newNode->value < currentNode->value ) {
         // caso 3: el valor es menor que el actual
         currentNode->left = insertNode(currentNode->left, newNode);
+    } else {
+        delete newNode;
     }
-    return nullptr;
+    return currentNode;
 }
 
 bool BinarySearchTree::insert(int value){
@@ -45,3 +43,26 @@ bool BinarySearchTree::insert(int value){
         return true;
     }
 }
+
+TreeNode* BinarySearchTree::successor(TreeNode* currentNode){
+    if(currentNode == nullptr) return nullptr;
+
+    return mostLeftChild(currentNode->right);
+}
+
+
+TreeNode* BinarySearchTree::mostLeftChild(TreeNode* currentNode){
+    if(currentNode == nullptr) return nullptr;
+    if(currentNode->left == nullptr){
+        return currentNode;
+    }
+    else {
+        return mostLeftChild(currentNode->left);
+    }
+}
+
+
+
+
+
+
