@@ -1,5 +1,8 @@
 #include <QCoreApplication>
 #include "binarysearchtree.h"
+#include <iostream>
+using std::cout;
+using std::endl;
 
 int main(int argc, char *argv[])
 {
@@ -12,14 +15,15 @@ int main(int argc, char *argv[])
     bst.insert(40);
     bst.insert(25);
     bst.insert(40);
+    bst.printCool("", bst.root, false);
+    bst.remove(40);
+    cout << "removing 40" << endl;
+    bst.printCool("", bst.root, false);
+    bst.remove(25);
 
-    try
-    {
-        bst.successor(bst.root->right->right->right);
-    }
-    catch (const std::exception& e){
-
-    }
+    cout << "removing 25" << endl;
+    bst.printCool("", bst.root, false);
+    cout << endl;
 
     return a.exec();
 }
