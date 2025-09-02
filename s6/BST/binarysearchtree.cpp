@@ -225,3 +225,26 @@ string BinarySearchTree::postOrderRaw(TreeNode* node){
     res += to_string(node->value) + " ";
     return res;
 }
+
+
+int BinarySearchTree::depth(int x){
+    return depthRaw(x, this->root, 0);
+}
+
+int BinarySearchTree::depthRaw(int x, TreeNode* currentNode, int iterations){
+    if(currentNode == nullptr) return -1;
+    if(currentNode->value == x) return iterations;
+
+    else if(x < currentNode->value) {
+        return depthRaw(x, currentNode->left, ++iterations);
+    } else {
+        return depthRaw(x, currentNode->right, ++iterations);
+    }
+}
+
+
+
+
+
+
+

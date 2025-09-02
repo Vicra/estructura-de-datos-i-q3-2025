@@ -46,6 +46,9 @@ public:
     string inorderRaw(TreeNode* node);
     string preorderRaw(TreeNode* node);
     string postOrderRaw(TreeNode* node);
+
+    int depth(int x);
+    int depthRaw(int x, TreeNode* currentNode, int iterations);
 };
 
 #endif // BINARYSEARCHTREE_H

@@ -20,6 +20,9 @@ int main(int argc, char *argv[])
     cout << "Preorder: " << bst.preorder() << endl;
     cout << "Postorder: " << bst.postorder() << endl;
 
+    int depth = bst.depth(40);
+    cout << "Profundidad de 40 es: " << depth << endl;
+
     // bst.remove(40);
     // cout << "removing 40" << endl;
     // bst.printCool("", bst.root, false);
