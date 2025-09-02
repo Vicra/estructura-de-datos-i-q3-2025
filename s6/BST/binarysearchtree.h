@@ -29,6 +29,23 @@ public:
     void print();
     void printTree(TreeNode* currentNode);
     void printCool(string prefix, TreeNode *currentRoot, bool isLeft);
+
+    // metodos de recorrer
+    string inorder() {
+        return inorderRaw(this->root);
+    }
+
+    string preorder() {
+        return preorderRaw(this->root);
+    }
+
+    string postorder() {
+        return postOrderRaw(this->root);
+    }
+
+    string inorderRaw(TreeNode* node);
+    string preorderRaw(TreeNode* node);
+    string postOrderRaw(TreeNode* node);
 };
 
 #endif // BINARYSEARCHTREE_H

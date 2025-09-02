@@ -1,8 +1,10 @@
 #include "binarysearchtree.h"
 #include <iostream>
+#include <string>
 
 using std::cout;
 using std::endl;
+using std::to_string;
 
 BinarySearchTree::BinarySearchTree() {
     this->root = nullptr;
@@ -192,4 +194,34 @@ void BinarySearchTree::printCool(string prefix, TreeNode *currentRoot, bool isLe
         cout << (isLeft ? "├─" : "└─" );
         cout << "nil" << endl;
     }
+}
+
+string BinarySearchTree::inorderRaw(TreeNode* node){
+    if(node == nullptr) return "";
+
+    string res = "";
+    res += inorderRaw(node->left);
+    res += to_string(node->value) + " ";
+    res += inorderRaw(node->right);
+    return res;
+}
+
+string BinarySearchTree::preorderRaw(TreeNode* node){
+    if(node == nullptr) return "";
+
+    string res = "";
+    res += to_string(node->value) + " ";
+    res += preorderRaw(node->left);
+    res += preorderRaw(node->right);
+    return res;
+}
+
+string BinarySearchTree::postOrderRaw(TreeNode* node){
+    if(node == nullptr) return "";
+
+    string res = "";
+    res += postOrderRaw(node->left);
+    res += postOrderRaw(node->right);
+    res += to_string(node->value) + " ";
+    return res;
 }

@@ -16,22 +16,26 @@ int main(int argc, char *argv[])
     bst.insert(25);
     bst.insert(40);
     bst.printCool("", bst.root, false);
-    bst.remove(40);
-    cout << "removing 40" << endl;
-    bst.printCool("", bst.root, false);
-    bst.remove(25);
+    cout << "Inorder: " << bst.inorder() << endl;
+    cout << "Preorder: " << bst.preorder() << endl;
+    cout << "Postorder: " << bst.postorder() << endl;
 
-    cout << "removing 25" << endl;
-    bst.printCool("", bst.root, false);
-    cout << endl;
+    // bst.remove(40);
+    // cout << "removing 40" << endl;
+    // bst.printCool("", bst.root, false);
+    // bst.remove(25);
 
-    int searchValue = 40;
-    TreeNode* found = bst.search(bst.root, searchValue);
-    if(found != nullptr){
-        cout << "found: " << found->value << endl;
-    } else {
-        cout << "nout found value : " << searchValue << endl;
-    }
+    // cout << "removing 25" << endl;
+    // bst.printCool("", bst.root, false);
+    // cout << endl;
+
+    // int searchValue = 40;
+    // TreeNode* found = bst.search(bst.root, searchValue);
+    // if(found != nullptr){
+    //     cout << "found: " << found->value << endl;
+    // } else {
+    //     cout << "nout found value : " << searchValue << endl;
+    // }
 
     return a.exec();
 }
